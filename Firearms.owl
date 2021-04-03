@@ -10,245 +10,31 @@
                                                                   rdfs:comment "An ontology on Real World Guns in Warfare video games"@en .
 
 #################################################################
-#    Classes
+#    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Acog
-:Acog rdf:type owl:Class ;
-      rdfs:subClassOf :Scopes .
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#isAttachedTo
+:isAttachedTo rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Ammo
-:Ammo rdf:type owl:Class .
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#isComponentOf
+:isComponentOf rdf:type owl:ObjectProperty .
 
 
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Armour_Piercing
-:Armour_Piercing rdf:type owl:Class ;
-                 rdfs:subClassOf :Special .
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#isFiredBy
+:isFiredBy rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Assault_Rifles
-:Assault_Rifles rdf:type owl:Class ;
-                rdfs:subClassOf :Firearms .
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#isUsedBy
+:isUsedBy rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Attachments
-:Attachments rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Automatic
-:Automatic rdf:type owl:Class ;
-           rdfs:subClassOf :Fire_Rate .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Bayonet
-:Bayonet rdf:type owl:Class ;
-         rdfs:subClassOf :Undermount_Accessories .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Bolt_Action
-:Bolt_Action rdf:type owl:Class ;
-             rdfs:subClassOf :Manual .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Bolt_release
-:Bolt_release rdf:type owl:Class ;
-              rdfs:subClassOf :Manual .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Explosive
-:Explosive rdf:type owl:Class ;
-           rdfs:subClassOf :Special .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Extended
-:Extended rdf:type owl:Class ;
-          rdfs:subClassOf :Magazines .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Fire_Rate
-:Fire_Rate rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Firearms
-:Firearms rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Flash_hider
-:Flash_hider rdf:type owl:Class ;
-             rdfs:subClassOf :Muzzle_devices .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#ForeGrip
-:ForeGrip rdf:type owl:Class ;
-          rdfs:subClassOf :Grips .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Full_metal_Jacket
-:Full_metal_Jacket rdf:type owl:Class ;
-                   rdfs:subClassOf :Ammo .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Fully
-:Fully rdf:type owl:Class ;
-       rdfs:subClassOf :Automatic .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Grenade_launcher
-:Grenade_launcher rdf:type owl:Class ;
-                  rdfs:subClassOf :Undermount_Accessories .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Grips
-:Grips rdf:type owl:Class ;
-       rdfs:subClassOf :Attachments .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Handguns
-:Handguns rdf:type owl:Class ;
-          rdfs:subClassOf :Firearms .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Hollow_point
-:Hollow_point rdf:type owl:Class ;
-              rdfs:subClassOf :Ammo .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Holographic
-:Holographic rdf:type owl:Class ;
-             rdfs:subClassOf :Scopes .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Jacketed_Hollow_Point
-:Jacketed_Hollow_Point rdf:type owl:Class ;
-                       rdfs:subClassOf :Ammo .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Lead_shot
-:Lead_shot rdf:type owl:Class ;
-           rdfs:subClassOf :Ammo .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Lever-action
-:Lever-action rdf:type owl:Class ;
-              rdfs:subClassOf :Manual .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Light_Machine_Gun
-:Light_Machine_Gun rdf:type owl:Class ;
-                   rdfs:subClassOf :Firearms .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Magazines
-:Magazines rdf:type owl:Class ;
-           rdfs:subClassOf :Attachments .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Manual
-:Manual rdf:type owl:Class ;
-        rdfs:subClassOf :Fire_Rate .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Muzzle_devices
-:Muzzle_devices rdf:type owl:Class ;
-                rdfs:subClassOf :Attachments .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Pump-action
-:Pump-action rdf:type owl:Class ;
-             rdfs:subClassOf :Manual .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Red_dot
-:Red_dot rdf:type owl:Class ;
-         rdfs:subClassOf :Scopes .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Revolver
-:Revolver rdf:type owl:Class ;
-          rdfs:subClassOf :Manual .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Scopes
-:Scopes rdf:type owl:Class ;
-        rdfs:subClassOf :Attachments .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Semi
-:Semi rdf:type owl:Class ;
-      rdfs:subClassOf :Automatic .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Semi-Jacketed
-:Semi-Jacketed rdf:type owl:Class ;
-               rdfs:subClassOf :Ammo .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Semi-Jacketed_Hollow_Point
-:Semi-Jacketed_Hollow_Point rdf:type owl:Class ;
-                            rdfs:subClassOf :Ammo .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Semi_Wad_Cutter
-:Semi_Wad_Cutter rdf:type owl:Class ;
-                 rdfs:subClassOf :Ammo .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Shotgun
-:Shotgun rdf:type owl:Class ;
-         owl:equivalentClass :Shotguns ;
-         rdfs:subClassOf :Undermount_Accessories .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Shotguns
-:Shotguns rdf:type owl:Class ;
-          rdfs:subClassOf :Firearms .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Silencer
-:Silencer rdf:type owl:Class ;
-          rdfs:subClassOf :Muzzle_devices .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Sniper_Rifles
-:Sniper_Rifles rdf:type owl:Class ;
-               rdfs:subClassOf :Firearms .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Special
-:Special rdf:type owl:Class ;
-         rdfs:subClassOf :Ammo .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Straight-pull_action
-:Straight-pull_action rdf:type owl:Class ;
-                      rdfs:subClassOf :Manual .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Sub_Machine_Gun
-:Sub_Machine_Gun rdf:type owl:Class ;
-                 rdfs:subClassOf :Firearms .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Suppressor
-:Suppressor rdf:type owl:Class ;
-            rdfs:subClassOf :Muzzle_devices .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Undermount_Accessories
-:Undermount_Accessories rdf:type owl:Class ;
-                        rdfs:subClassOf :Attachments .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Wad_Cutter
-:Wad_Cutter rdf:type owl:Class ;
-            rdfs:subClassOf :Ammo .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#muzzle_brake
-:muzzle_brake rdf:type owl:Class ;
-              rdfs:subClassOf :Muzzle_devices .
-
+#################################################################
+#    Classes
+#################################################################
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#16x
 <http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#16x> rdf:type owl:Class ;
@@ -268,6 +54,304 @@
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#8x
 <http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#8x> rdf:type owl:Class ;
                                                                     rdfs:subClassOf :Scopes .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Acog
+:Acog rdf:type owl:Class ;
+      rdfs:subClassOf :Scopes .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Ammo
+:Ammo rdf:type owl:Class ;
+      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                        owl:onProperty :isFiredBy ;
+                        owl:allValuesFrom :Firearms
+                      ] .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Armour_Piercing
+:Armour_Piercing rdf:type owl:Class ;
+                 rdfs:subClassOf :Special .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Assault_Rifles
+:Assault_Rifles rdf:type owl:Class ;
+                rdfs:subClassOf :Firearms .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Attachments
+:Attachments rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Automatic
+:Automatic rdf:type owl:Class ;
+           rdfs:subClassOf :Fire_Rate .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Bayonet
+:Bayonet rdf:type owl:Class ;
+         rdfs:subClassOf :Undermount_Accessories .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Bolt_Action
+:Bolt_Action rdf:type owl:Class ;
+             rdfs:subClassOf :Manual .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Bolt_release
+:Bolt_release rdf:type owl:Class ;
+              rdfs:subClassOf :Manual .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Explosive
+:Explosive rdf:type owl:Class ;
+           rdfs:subClassOf :Special .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Extended
+:Extended rdf:type owl:Class ;
+          rdfs:subClassOf :Magazines .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Fire_Rate
+:Fire_Rate rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Firearms
+:Firearms rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Flash_hider
+:Flash_hider rdf:type owl:Class ;
+             rdfs:subClassOf :Muzzle_devices .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#ForeGrip
+:ForeGrip rdf:type owl:Class ;
+          rdfs:subClassOf :Grips .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Full_metal_Jacket
+:Full_metal_Jacket rdf:type owl:Class ;
+                   rdfs:subClassOf :Ammo .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Fully
+:Fully rdf:type owl:Class ;
+       rdfs:subClassOf :Automatic .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Grenade_launcher
+:Grenade_launcher rdf:type owl:Class ;
+                  rdfs:subClassOf :Undermount_Accessories .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Grips
+:Grips rdf:type owl:Class ;
+       rdfs:subClassOf :Attachments ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :isAttachedTo ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Grips
+                       ] .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Handguns
+:Handguns rdf:type owl:Class ;
+          rdfs:subClassOf :Firearms .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Hollow_point
+:Hollow_point rdf:type owl:Class ;
+              rdfs:subClassOf :Ammo .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Holographic
+:Holographic rdf:type owl:Class ;
+             rdfs:subClassOf :Scopes .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Jacketed_Hollow_Point
+:Jacketed_Hollow_Point rdf:type owl:Class ;
+                       rdfs:subClassOf :Ammo .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Lead_shot
+:Lead_shot rdf:type owl:Class ;
+           rdfs:subClassOf :Ammo .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Lever-action
+:Lever-action rdf:type owl:Class ;
+              rdfs:subClassOf :Manual .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Light_Machine_Gun
+:Light_Machine_Gun rdf:type owl:Class ;
+                   rdfs:subClassOf :Firearms .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Magazines
+:Magazines rdf:type owl:Class ;
+           rdfs:subClassOf :Attachments .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Manual
+:Manual rdf:type owl:Class ;
+        rdfs:subClassOf :Fire_Rate .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Muzzle_devices
+:Muzzle_devices rdf:type owl:Class ;
+                rdfs:subClassOf :Attachments ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :isAttachedTo ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :Firearms
+                                ] .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Pump-action
+:Pump-action rdf:type owl:Class ;
+             rdfs:subClassOf :Manual .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Red_dot
+:Red_dot rdf:type owl:Class ;
+         rdfs:subClassOf :Scopes .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Revolver
+:Revolver rdf:type owl:Class ;
+          rdfs:subClassOf :Manual .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Scopes
+:Scopes rdf:type owl:Class ;
+        rdfs:subClassOf :Attachments .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Semi
+:Semi rdf:type owl:Class ;
+      rdfs:subClassOf :Automatic .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Semi-Jacketed
+:Semi-Jacketed rdf:type owl:Class ;
+               rdfs:subClassOf :Ammo .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Semi-Jacketed_Hollow_Point
+:Semi-Jacketed_Hollow_Point rdf:type owl:Class ;
+                            rdfs:subClassOf :Ammo .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Semi_Wad_Cutter
+:Semi_Wad_Cutter rdf:type owl:Class ;
+                 rdfs:subClassOf :Ammo .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Shotgun
+:Shotgun rdf:type owl:Class ;
+         owl:equivalentClass :Shotguns ;
+         rdfs:subClassOf :Undermount_Accessories .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Shotguns
+:Shotguns rdf:type owl:Class ;
+          rdfs:subClassOf :Firearms .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Silencer
+:Silencer rdf:type owl:Class ;
+          rdfs:subClassOf :Muzzle_devices .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Sniper_Rifles
+:Sniper_Rifles rdf:type owl:Class ;
+               rdfs:subClassOf :Firearms .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Special
+:Special rdf:type owl:Class ;
+         rdfs:subClassOf :Ammo .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Straight-pull_action
+:Straight-pull_action rdf:type owl:Class ;
+                      rdfs:subClassOf :Manual .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Sub_Machine_Gun
+:Sub_Machine_Gun rdf:type owl:Class ;
+                 rdfs:subClassOf :Firearms .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Suppressor
+:Suppressor rdf:type owl:Class ;
+            rdfs:subClassOf :Muzzle_devices .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Undermount_Accessories
+:Undermount_Accessories rdf:type owl:Class ;
+                        rdfs:subClassOf :Attachments .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Wad_Cutter
+:Wad_Cutter rdf:type owl:Class ;
+            rdfs:subClassOf :Ammo .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#muzzle_brake
+:muzzle_brake rdf:type owl:Class ;
+              rdfs:subClassOf :Muzzle_devices .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#16x>
+                <http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#2x>
+                <http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#4x>
+                <http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#8x>
+                :Acog
+                :Holographic
+                :Red_dot
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Bayonet
+                :Grenade_launcher
+                :Shotgun
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Flash_hider
+                :Silencer
+                :Suppressor
+                :muzzle_brake
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Full_metal_Jacket
+                :Hollow_point
+                :Jacketed_Hollow_Point
+                :Lead_shot
+                :Semi-Jacketed
+                :Semi-Jacketed_Hollow_Point
+                :Semi_Wad_Cutter
+                :Special
+                :Wad_Cutter
+              )
+] .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
