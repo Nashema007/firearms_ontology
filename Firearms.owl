@@ -13,6 +13,10 @@
 #    Object Properties
 #################################################################
 
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#IsDeterminedBy
+:IsDeterminedBy rdf:type owl:ObjectProperty .
+
+
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#isAttachedTo
 :isAttachedTo rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf owl:topObjectProperty .
@@ -20,6 +24,10 @@
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#isComponentOf
 :isComponentOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#isContainedIn
+:isContainedIn rdf:type owl:ObjectProperty .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#isFiredBy
@@ -30,6 +38,14 @@
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#isUsedBy
 :isUsedBy rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf owl:topObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Contains
+:Contains rdf:type owl:DatatypeProperty .
 
 
 #################################################################
@@ -66,6 +82,11 @@
       rdfs:subClassOf [ rdf:type owl:Restriction ;
                         owl:onProperty :isFiredBy ;
                         owl:allValuesFrom :Firearms
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :isContainedIn ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Magazines
                       ] .
 
 
@@ -80,7 +101,12 @@
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Attachments
-:Attachments rdf:type owl:Class .
+:Attachments rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty :isAttachedTo ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Firearms
+                             ] .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Automatic
@@ -114,7 +140,12 @@
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Fire_Rate
-:Fire_Rate rdf:type owl:Class .
+:Fire_Rate rdf:type owl:Class ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty :IsDeterminedBy ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Firearms
+                           ] .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Firearms
@@ -203,12 +234,7 @@
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Muzzle_devices
 :Muzzle_devices rdf:type owl:Class ;
-                rdfs:subClassOf :Attachments ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :isAttachedTo ;
-                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                  owl:onClass :Firearms
-                                ] .
+                rdfs:subClassOf :Attachments .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Pump-action
