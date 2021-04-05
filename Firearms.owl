@@ -52,28 +52,18 @@
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Revolver
-:Revolver rdf:type owl:Class ;
-          rdfs:subClassOf :Handguns .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Shotgun
-:Shotgun rdf:type owl:Class ;
-         rdfs:subClassOf :Undermount_Accessories .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#SpecialAmmo
-:SpecialAmmo rdf:type owl:Class ;
-             rdfs:subClassOf :Magazines .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Speedloader
-:Speedloader rdf:type owl:Class ;
-             rdfs:subClassOf :Magazines ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :isComponentOf ;
-                               owl:allValuesFrom :Revolver
-                             ] .
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Fragmentation_Rounds
+:Fragmentation_Rounds rdf:type owl:Class ;
+                      owl:equivalentClass [ owl:intersectionOf ( :Fragmentation_Rounds
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :isUsedBy ;
+                                                                   owl:allValuesFrom :Grenade_launcher
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ;
+                      rdfs:subClassOf :Ammo ;
+                      owl:disjointWith :Explosive .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#16x
@@ -160,6 +150,18 @@
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Explosive
 :Explosive rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :Explosive
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :isUsedBy ;
+                                                        owl:someValuesFrom [ owl:intersectionOf ( :Shotguns
+                                                                                                  :Sniper_Rifles
+                                                                                                ) ;
+                                                                             rdf:type owl:Class
+                                                                           ]
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
            rdfs:subClassOf :Special .
 
 
@@ -282,7 +284,8 @@
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Revolver
 :Revolver rdf:type owl:Class ;
-          rdfs:subClassOf :Manual .
+          rdfs:subClassOf :Handguns ,
+                          :Manual .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Scopes
@@ -310,6 +313,11 @@
                  rdfs:subClassOf :Ammo .
 
 
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Shotgun
+:Shotgun rdf:type owl:Class ;
+         rdfs:subClassOf :Undermount_Accessories .
+
+
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Shotguns
 :Shotguns rdf:type owl:Class ;
           rdfs:subClassOf :Firearms .
@@ -329,6 +337,20 @@
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Special
 :Special rdf:type owl:Class ;
          rdfs:subClassOf :Ammo .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#SpecialAmmo
+:SpecialAmmo rdf:type owl:Class ;
+             rdfs:subClassOf :Magazines .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Speedloader
+:Speedloader rdf:type owl:Class ;
+             rdfs:subClassOf :Magazines ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isComponentOf ;
+                               owl:allValuesFrom :Revolver
+                             ] .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Straight-pull_action
@@ -366,22 +388,6 @@
 #################################################################
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Shotgun
-                :Bayonet
-                :Grenade_launcher
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :SpecialAmmo
-                :Speedloader
-                :Extended
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
   owl:members ( <http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#16x>
                 <http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#2x>
                 <http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#4x>
@@ -398,6 +404,22 @@
                 :Grips
                 :Handguns
                 :Sub_Machine_Gun
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Bayonet
+                :Grenade_launcher
+                :Shotgun
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Extended
+                :SpecialAmmo
+                :Speedloader
               )
 ] .
 
