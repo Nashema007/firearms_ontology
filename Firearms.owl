@@ -13,13 +13,13 @@
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#isA
-:isA rdf:type owl:ObjectProperty ;
-     rdfs:domain :Firearms .
-
-
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#IsDeterminedBy
 :IsDeterminedBy rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#isA
+:isA rdf:type owl:ObjectProperty ;
+     rdfs:domain :Firearms .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#isAttachedTo
@@ -45,7 +45,8 @@
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#isUsedBy
 :isUsedBy rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf owl:topObjectProperty ;
-          rdfs:domain :Firearms .
+          rdfs:domain :Ammunition ;
+          rdfs:range :Firearms .
 
 
 #################################################################
@@ -207,9 +208,13 @@
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Handguns
 :Handguns rdf:type owl:Class ;
           rdfs:subClassOf [ owl:intersectionOf ( :Firearms
-                                                 [ rdf:type owl:Restriction ;
-                                                   owl:onProperty :isA ;
-                                                   owl:allValuesFrom :Manual
+                                                 [ rdf:type owl:Class ;
+                                                   owl:unionOf ( :Automatic
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :isA ;
+                                                                   owl:allValuesFrom :Semi-Automatic
+                                                                 ]
+                                                               )
                                                  ]
                                                ) ;
                             rdf:type owl:Class
@@ -255,6 +260,11 @@
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :isAttachedTo ;
                              owl:allValuesFrom :Firearms
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :isContainedIn ;
+                             owl:maxQualifiedCardinality "30"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Ammunition
                            ] .
 
 
@@ -299,9 +309,13 @@
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Shotguns
 :Shotguns rdf:type owl:Class ;
           rdfs:subClassOf [ owl:intersectionOf ( :Firearms
-                                                 [ rdf:type owl:Restriction ;
-                                                   owl:onProperty :isA ;
-                                                   owl:allValuesFrom :Manual
+                                                 [ rdf:type owl:Class ;
+                                                   owl:unionOf ( :Automatic
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :isA ;
+                                                                   owl:allValuesFrom :Semi-Automatic
+                                                                 ]
+                                                               )
                                                  ]
                                                ) ;
                             rdf:type owl:Class
@@ -391,6 +405,20 @@
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#muzzle_brake
 :muzzle_brake rdf:type owl:Class ;
               rdfs:subClassOf :Muzzle_devices .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#AK-47
+:AK-47 rdf:type owl:NamedIndividual ,
+                :Firearms .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#AK-47_Ammo
+:AK-47_Ammo rdf:type owl:NamedIndividual ,
+                     :Ammunition .
 
 
 #################################################################
