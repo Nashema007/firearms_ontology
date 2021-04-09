@@ -13,14 +13,16 @@
 #    Object Properties
 #################################################################
 
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Contains
+:Contains rdf:type owl:ObjectProperty ;
+          rdfs:domain :Magazines ;
+          rdfs:range :Ammunition .
+
+
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#hasAttached
 :hasAttached rdf:type owl:ObjectProperty ;
              rdfs:domain :Firearms ;
              rdfs:range :Attachments .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#IsDeterminedBy
-:IsDeterminedBy rdf:type owl:ObjectProperty .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#isA
@@ -34,10 +36,6 @@
               rdfs:subPropertyOf owl:topObjectProperty ;
               rdfs:domain :Firearms ;
               rdfs:range :Attachments .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#isComponentOf
-:isComponentOf rdf:type owl:ObjectProperty .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#isContainedIn
@@ -55,7 +53,7 @@
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#isUsedBy
 :isUsedBy rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf owl:topObjectProperty ;
-          rdfs:domain :Ammunition ;
+          rdfs:domain :Magazines ;
           rdfs:range :Firearms .
 
 
@@ -70,6 +68,15 @@
 #################################################################
 #    Classes
 #################################################################
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#.357HandgunAmmo
+<http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#.357HandgunAmmo> rdf:type owl:Class ;
+                                                                                 rdfs:subClassOf :Ammunition ,
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty :isContainedIn ;
+                                                                                                   owl:allValuesFrom :Speedloader
+                                                                                                 ] .
+
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#16x
 <http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#16x> rdf:type owl:Class ;
@@ -114,7 +121,7 @@
                  rdfs:subClassOf :Special ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :isContainedIn ;
-                                   owl:allValuesFrom :SpecialAmmo
+                                   owl:allValuesFrom :SpecialAmmoMagazine
                                  ] .
 
 
@@ -140,11 +147,7 @@
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Attachments
-:Attachments rdf:type owl:Class ;
-             rdfs:subClassOf [ rdf:type owl:Restriction ;
-                               owl:onProperty :isAttachedTo ;
-                               owl:allValuesFrom :Firearms
-                             ] .
+:Attachments rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Automatic
@@ -276,11 +279,11 @@
 :Magazines rdf:type owl:Class ;
            rdfs:subClassOf :Attachments ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :isAttachedTo ;
+                             owl:onProperty :isUsedBy ;
                              owl:allValuesFrom :Firearms
                            ] ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :isContainedIn ;
+                             owl:onProperty :Contains ;
                              owl:maxQualifiedCardinality "30"^^xsd:nonNegativeInteger ;
                              owl:onClass :Ammunition
                            ] .
@@ -378,9 +381,9 @@
          rdfs:subClassOf :Ammunition .
 
 
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#SpecialAmmo
-:SpecialAmmo rdf:type owl:Class ;
-             rdfs:subClassOf :Magazines .
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#SpecialAmmoMagazine
+:SpecialAmmoMagazine rdf:type owl:Class ;
+                     rdfs:subClassOf :Magazines .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Speedloader
@@ -492,7 +495,7 @@
 
 [ rdf:type owl:AllDisjointClasses ;
   owl:members ( :Extended
-                :SpecialAmmo
+                :SpecialAmmoMagazine
                 :Speedloader
               )
 ] .
