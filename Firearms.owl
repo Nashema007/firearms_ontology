@@ -13,19 +13,27 @@
 #    Object Properties
 #################################################################
 
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#hasAttached
+:hasAttached rdf:type owl:ObjectProperty ;
+             rdfs:domain :Firearms ;
+             rdfs:range :Attachments .
+
+
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#IsDeterminedBy
 :IsDeterminedBy rdf:type owl:ObjectProperty .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#isA
 :isA rdf:type owl:ObjectProperty ;
-     rdfs:domain :Firearms .
+     rdfs:domain :Firearms ;
+     rdfs:range :Fire_Rate .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#isAttachedTo
 :isAttachedTo rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf owl:topObjectProperty ;
-              rdfs:domain :Firearms .
+              rdfs:domain :Firearms ;
+              rdfs:range :Attachments .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#isComponentOf
@@ -33,13 +41,15 @@
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#isContainedIn
-:isContainedIn rdf:type owl:ObjectProperty .
+:isContainedIn rdf:type owl:ObjectProperty ;
+               rdfs:domain :Ammunition .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#isFiredBy
 :isFiredBy rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf owl:topObjectProperty ;
-           rdfs:domain :Firearms .
+           rdfs:domain :Ammunition ;
+           rdfs:range :Firearms .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#isUsedBy
@@ -123,14 +133,18 @@
                                   rdf:type owl:Class
                                 ] ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :isAttachedTo ;
+                                  owl:onProperty :hasAttached ;
                                   owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
                                   owl:onClass :Attachments
                                 ] .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Attachments
-:Attachments rdf:type owl:Class .
+:Attachments rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty :isAttachedTo ;
+                               owl:allValuesFrom :Firearms
+                             ] .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Automatic
@@ -159,7 +173,11 @@
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Firearms
-:Firearms rdf:type owl:Class .
+:Firearms rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasAttached ;
+                            owl:someValuesFrom :Attachments
+                          ] .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Flash_hider
@@ -220,7 +238,7 @@
                             rdf:type owl:Class
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :isAttachedTo ;
+                            owl:onProperty :hasAttached ;
                             owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
                             owl:onClass :Attachments
                           ] ;
@@ -248,7 +266,7 @@
                                      rdf:type owl:Class
                                    ] ,
                                    [ rdf:type owl:Restriction ;
-                                     owl:onProperty :isAttachedTo ;
+                                     owl:onProperty :hasAttached ;
                                      owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
                                      owl:onClass :Attachments
                                    ] .
@@ -321,7 +339,7 @@
                             rdf:type owl:Class
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :isAttachedTo ;
+                            owl:onProperty :hasAttached ;
                             owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
                             owl:onClass :Attachments
                           ] .
@@ -348,7 +366,7 @@
                                  rdf:type owl:Class
                                ] ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty :isAttachedTo ;
+                                 owl:onProperty :hasAttached ;
                                  owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
                                  owl:onClass :Attachments
                                ] ;
@@ -381,7 +399,7 @@
                                    rdf:type owl:Class
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :isAttachedTo ;
+                                   owl:onProperty :hasAttached ;
                                    owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
                                    owl:onClass :Attachments
                                  ] .
@@ -411,12 +429,12 @@
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#AK-47
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#AK-47
 :AK-47 rdf:type owl:NamedIndividual ,
                 :Firearms .
 
 
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#AK-47_Ammo
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#AK-47_Ammo
 :AK-47_Ammo rdf:type owl:NamedIndividual ,
                      :Ammunition .
 
