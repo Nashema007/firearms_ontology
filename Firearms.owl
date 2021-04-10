@@ -461,7 +461,12 @@
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Undermount_Accessories
 :Undermount_Accessories rdf:type owl:Class ;
-                        rdfs:subClassOf :Attachments .
+                        rdfs:subClassOf :Attachments ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :isAttachedTo ;
+                                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onClass :Firearms
+                                        ] .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Wad_Cutter
