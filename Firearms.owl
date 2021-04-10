@@ -13,13 +13,13 @@
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Contains
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Contains
 :Contains rdf:type owl:ObjectProperty ;
           rdfs:domain :Magazines ;
           rdfs:range :Ammunition .
 
 
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#hasAttached
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#hasAttached
 :hasAttached rdf:type owl:ObjectProperty ;
              rdfs:domain :Firearms ;
              rdfs:range :Attachments .
@@ -69,6 +69,29 @@
 #    Classes
 #################################################################
 
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Revolver
+:Revolver rdf:type owl:Class ;
+          rdfs:subClassOf :Handguns ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :isA ;
+                            owl:allValuesFrom :Semi-Automatic
+                          ] .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Shotgun_Shells
+:Shotgun_Shells rdf:type owl:Class ;
+                rdfs:subClassOf :Ammunition ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :isFiredBy ;
+                                  owl:allValuesFrom [ rdf:type owl:Class ;
+                                                      owl:unionOf ( :Shotgun
+                                                                    :Shotguns
+                                                                  )
+                                                    ]
+                                ] ;
+                rdfs:comment "Ammunition that is used by shotgun gun and undermount accessory" .
+
+
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#.357HandgunAmmo
 <http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#.357HandgunAmmo> rdf:type owl:Class ;
                                                                                  rdfs:subClassOf :Ammunition ,
@@ -83,8 +106,7 @@
                                                                      rdfs:subClassOf :Scopes ,
                                                                                      [ rdf:type owl:Restriction ;
                                                                                        owl:onProperty :isAttachedTo ;
-                                                                                       owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                                       owl:onClass :Sniper_Rifles
+                                                                                       owl:allValuesFrom :Sniper_Rifles
                                                                                      ] .
 
 
@@ -111,8 +133,24 @@
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Ammunition
 :Ammunition rdf:type owl:Class ;
             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :isContainedIn ;
+                              owl:allValuesFrom [ rdf:type owl:Class ;
+                                                  owl:unionOf ( :Shotgun
+                                                                :Shotguns
+                                                              )
+                                                ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
                               owl:onProperty :isFiredBy ;
                               owl:allValuesFrom :Firearms
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :isUsedBy ;
+                              owl:allValuesFrom [ rdf:type owl:Class ;
+                                                  owl:unionOf ( :Shotgun
+                                                                :Shotguns
+                                                              )
+                                                ]
                             ] .
 
 
@@ -388,7 +426,15 @@
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Speedloader
 :Speedloader rdf:type owl:Class ;
-             rdfs:subClassOf :Magazines .
+             rdfs:subClassOf :Magazines ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :Contains ;
+                               owl:allValuesFrom <http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#.357HandgunAmmo>
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isUsedBy ;
+                               owl:allValuesFrom :Revolver
+                             ] .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Sub_Machine_Gun
