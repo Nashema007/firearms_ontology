@@ -493,6 +493,24 @@
 #################################################################
 
 [ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Revolver
+                :Light_Machine_Gun
+                :Shotguns
+                :Silencer
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Revolver
+                :Light_Machine_Gun
+                :Shotguns
+                :Suppressor
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
   owl:members ( <http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#16x>
                 <http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#2x>
                 <http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#4x>
@@ -543,6 +561,14 @@
   owl:members ( :Extended
                 :SpecialAmmoMagazine
                 :Speedloader
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Flash_hider
+                :Silencer
+                :muzzle_brake
               )
 ] .
 
