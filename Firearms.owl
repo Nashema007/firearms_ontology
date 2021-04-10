@@ -19,16 +19,16 @@
           rdfs:range :Ammunition .
 
 
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Rate_of_fire
+:Rate_of_fire rdf:type owl:ObjectProperty ;
+              rdfs:domain :Firearms ;
+              rdfs:range :Fire_Rate .
+
+
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#hasAttached
 :hasAttached rdf:type owl:ObjectProperty ;
              rdfs:domain :Firearms ;
              rdfs:range :Attachments .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#isA
-:isA rdf:type owl:ObjectProperty ;
-     rdfs:domain :Firearms ;
-     rdfs:range :Fire_Rate .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#isAttachedTo
@@ -68,29 +68,6 @@
 #################################################################
 #    Classes
 #################################################################
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Revolver
-:Revolver rdf:type owl:Class ;
-          rdfs:subClassOf :Handguns ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :isA ;
-                            owl:allValuesFrom :Semi-Automatic
-                          ] .
-
-
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Shotgun_Shells
-:Shotgun_Shells rdf:type owl:Class ;
-                rdfs:subClassOf :Ammunition ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :isFiredBy ;
-                                  owl:allValuesFrom [ rdf:type owl:Class ;
-                                                      owl:unionOf ( :Shotgun
-                                                                    :Shotguns
-                                                                  )
-                                                    ]
-                                ] ;
-                rdfs:comment "Ammunition that is used by shotgun gun and undermount accessory" .
-
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#.357HandgunAmmo
 <http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#.357HandgunAmmo> rdf:type owl:Class ;
@@ -167,7 +144,7 @@
 :Assault_Rifles rdf:type owl:Class ;
                 rdfs:subClassOf [ owl:intersectionOf ( :Firearms
                                                        [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :isA ;
+                                                         owl:onProperty :Rate_of_fire ;
                                                          owl:allValuesFrom [ rdf:type owl:Class ;
                                                                              owl:unionOf ( :Automatic
                                                                                            :Semi-Automatic
@@ -270,7 +247,7 @@
                                                  [ rdf:type owl:Class ;
                                                    owl:unionOf ( :Automatic
                                                                  [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty :isA ;
+                                                                   owl:onProperty :Rate_of_fire ;
                                                                    owl:allValuesFrom :Semi-Automatic
                                                                  ]
                                                                )
@@ -300,7 +277,7 @@
 :Light_Machine_Gun rdf:type owl:Class ;
                    rdfs:subClassOf [ owl:intersectionOf ( :Firearms
                                                           [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :isA ;
+                                                            owl:onProperty :Rate_of_fire ;
                                                             owl:allValuesFrom :Automatic
                                                           ]
                                                         ) ;
@@ -346,6 +323,15 @@
          rdfs:subClassOf :Scopes .
 
 
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Revolver
+:Revolver rdf:type owl:Class ;
+          rdfs:subClassOf :Handguns ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :Rate_of_fire ;
+                            owl:allValuesFrom :Semi-Automatic
+                          ] .
+
+
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Scopes
 :Scopes rdf:type owl:Class ;
         rdfs:subClassOf :Attachments ,
@@ -365,13 +351,27 @@
          rdfs:subClassOf :Undermount_Accessories .
 
 
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Shotgun_Shells
+:Shotgun_Shells rdf:type owl:Class ;
+                rdfs:subClassOf :Ammunition ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :isFiredBy ;
+                                  owl:allValuesFrom [ rdf:type owl:Class ;
+                                                      owl:unionOf ( :Shotgun
+                                                                    :Shotguns
+                                                                  )
+                                                    ]
+                                ] ;
+                rdfs:comment "Ammunition that is used by shotgun gun and undermount accessory" .
+
+
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Shotguns
 :Shotguns rdf:type owl:Class ;
           rdfs:subClassOf [ owl:intersectionOf ( :Firearms
                                                  [ rdf:type owl:Class ;
                                                    owl:unionOf ( :Automatic
                                                                  [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty :isA ;
+                                                                   owl:onProperty :Rate_of_fire ;
                                                                    owl:allValuesFrom :Semi-Automatic
                                                                  ]
                                                                )
@@ -396,7 +396,7 @@
 :Sniper_Rifles rdf:type owl:Class ;
                rdfs:subClassOf [ owl:intersectionOf ( :Firearms
                                                       [ rdf:type owl:Restriction ;
-                                                        owl:onProperty :isA ;
+                                                        owl:onProperty :Rate_of_fire ;
                                                         owl:allValuesFrom [ rdf:type owl:Class ;
                                                                             owl:unionOf ( :Manual
                                                                                           :Semi-Automatic
@@ -441,7 +441,7 @@
 :Sub_Machine_Gun rdf:type owl:Class ;
                  rdfs:subClassOf [ owl:intersectionOf ( :Firearms
                                                         [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :isA ;
+                                                          owl:onProperty :Rate_of_fire ;
                                                           owl:allValuesFrom :Automatic
                                                         ]
                                                       ) ;
@@ -496,24 +496,6 @@
 #################################################################
 #    General axioms
 #################################################################
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Revolver
-                :Light_Machine_Gun
-                :Shotguns
-                :Silencer
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Revolver
-                :Light_Machine_Gun
-                :Shotguns
-                :Suppressor
-              )
-] .
-
 
 [ rdf:type owl:AllDisjointClasses ;
   owl:members ( <http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#16x>
@@ -582,6 +564,24 @@
   owl:members ( :Flash_hider
                 :Suppressor
                 :muzzle_brake
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Light_Machine_Gun
+                :Revolver
+                :Shotguns
+                :Silencer
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Light_Machine_Gun
+                :Revolver
+                :Shotguns
+                :Suppressor
               )
 ] .
 
