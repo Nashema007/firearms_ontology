@@ -73,11 +73,6 @@
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#SpecialAmmoCartridge
-:SpecialAmmoCartridge rdf:type owl:Class ;
-                      rdfs:subClassOf :Cartridge .
-
-
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#.357SpeedloaderAmmo
 <http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#.357SpeedloaderAmmo> rdf:type owl:Class ;
                                                                                      rdfs:subClassOf :Cartridge ,
@@ -188,7 +183,8 @@
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :isContainedIn ;
                              owl:allValuesFrom :Magazines
-                           ] .
+                           ] ;
+           rdfs:comment "The size of the cartridge determines the magazine it's stored in and types of gun that fires it. So instances of cartridges are differentiated by size"@en .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Explosive
@@ -199,11 +195,20 @@
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Extended
 :Extended rdf:type owl:Class ;
-          rdfs:subClassOf :Magazines .
+          rdfs:subClassOf :Magazines ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :Contains ;
+                            owl:maxQualifiedCardinality "45"^^xsd:nonNegativeInteger ;
+                            owl:onClass :Cartridge
+                          ] .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Fire_Rate
-:Fire_Rate rdf:type owl:Class .
+:Fire_Rate rdf:type owl:Class ;
+           rdfs:comment """Denotes the difference between 3 types of firing.
+Automatic: Hold down trigger constant fire
+Semi-automatic: Each trigger pull fires a single bullet
+Manual: Necessary to load each bullet to get ready to fire"""@en .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Firearms
@@ -211,7 +216,8 @@
           rdfs:subClassOf [ rdf:type owl:Restriction ;
                             owl:onProperty :hasAttached ;
                             owl:someValuesFrom :Attachments
-                          ] .
+                          ] ;
+          rdfs:comment "The different categories of gun that we are covering in our ontology. Firearms are essentially portable guns and can fall in the broad categories that are subclasses"@en .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#FlashHider
@@ -255,7 +261,8 @@
                          owl:onClass :LightMachineGun
                        ] ;
        owl:disjointWith :SniperRifles ,
-                        :UndermountAccessories .
+                        :UndermountAccessories ;
+       rdfs:comment "Attached to Light Machine Guns to stabilise the fire"@en .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Handguns
@@ -317,8 +324,9 @@
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :Contains ;
                              owl:maxQualifiedCardinality "30"^^xsd:nonNegativeInteger ;
-                             owl:onClass :Ammunition
-                           ] .
+                             owl:onClass :Cartridge
+                           ] ;
+           rdfs:comment "Each magazine can fit a specific cartridge size and stores that size of ammunition."@en .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Manual
@@ -337,7 +345,8 @@
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :isAttachedTo ;
                                  owl:allValuesFrom :Firearms
-                               ] .
+                               ] ;
+               rdfs:comment "Attaches to the end of the barrels of gun. Can only have one of these attachments at a time"@en .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#RedDot
@@ -448,9 +457,18 @@
                          ] .
 
 
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#SpecialAmmoCartridge
+:SpecialAmmoCartridge rdf:type owl:Class ;
+                      rdfs:subClassOf :Cartridge .
+
+
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#SpecialAmmoMagazine
 :SpecialAmmoMagazine rdf:type owl:Class ;
-                     rdfs:subClassOf :Magazines .
+                     rdfs:subClassOf :Magazines ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :Contains ;
+                                       owl:allValuesFrom :SpecialAmmoCartridge
+                                     ] .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Speedloader
@@ -496,7 +514,8 @@
                                          owl:onProperty :isAttachedTo ;
                                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                          owl:onClass :Firearms
-                                       ] .
+                                       ] ;
+                       rdfs:comment "Attached underneath guns to provide a secondary form of weaponary. Cannot be attached at the same time at a fore grip."@en .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#WadCutter
