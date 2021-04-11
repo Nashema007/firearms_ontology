@@ -79,7 +79,8 @@
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :isFittedOn ;
                                owl:allValuesFrom :Cartridge
-                             ] .
+                             ] ;
+             rdfs:comment "The physical object fired by the gun. Comes in many shapes and forms. Most importantly fits to a cartridge that fires it" .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Cartridge
@@ -212,7 +213,8 @@
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#ForeGrip
 :ForeGrip rdf:type owl:Class ;
           rdfs:subClassOf :Grips ;
-          owl:disjointWith :Undermount_Accessories .
+          owl:disjointWith :Undermount_Accessories ;
+          rdfs:comment "Used By Machine guns to stabilise them. Cannot be attached at the same time as an undermount accessory" .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Fragmentation_Rounds
@@ -344,7 +346,8 @@
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :isAttachedTo ;
                           owl:allValuesFrom :Firearms
-                        ] .
+                        ] ;
+        rdfs:comment "Replace the iron sights on guns. 2x and greater scopes attach to Sniper Rifles, while the rest are used by other gun" .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Semi-Automatic
@@ -442,7 +445,8 @@
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :isUsedBy ;
                                owl:allValuesFrom :Revolver
-                             ] .
+                             ] ;
+             rdfs:comment "Specifically used by revolvers, Semi-automatic fire rate. Take .357 Ammo" .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Sub_Machine_Gun
