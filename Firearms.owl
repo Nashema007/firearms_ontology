@@ -13,6 +13,10 @@
 #    Object Properties
 #################################################################
 
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#isFittedOn
+:isFittedOn rdf:type owl:ObjectProperty .
+
+
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Contains
 :Contains rdf:type owl:ObjectProperty ;
           rdfs:domain :Magazines ;
@@ -69,9 +73,27 @@
 #    Classes
 #################################################################
 
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Bullet_Type
+:Bullet_Type rdf:type owl:Class ;
+             rdfs:subClassOf :Ammunition ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isFittedOn ;
+                               owl:allValuesFrom :Cartridge
+                             ] .
+
+
+###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#Cartridge
+:Cartridge rdf:type owl:Class ;
+           rdfs:subClassOf :Ammunition ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :isContainedIn ;
+                             owl:allValuesFrom :Magazines
+                           ] .
+
+
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#.357HandgunAmmo
 <http://www.semanticweb.org/ashley/ontologies/2021/2/FirearmsIR#.357HandgunAmmo> rdf:type owl:Class ;
-                                                                                 rdfs:subClassOf :Ammunition ,
+                                                                                 rdfs:subClassOf :Cartridge ,
                                                                                                  [ rdf:type owl:Restriction ;
                                                                                                    owl:onProperty :isContainedIn ;
                                                                                                    owl:allValuesFrom :Speedloader
@@ -110,24 +132,8 @@
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Ammunition
 :Ammunition rdf:type owl:Class ;
             rdfs:subClassOf [ rdf:type owl:Restriction ;
-                              owl:onProperty :isContainedIn ;
-                              owl:allValuesFrom [ rdf:type owl:Class ;
-                                                  owl:unionOf ( :Shotgun
-                                                                :Shotguns
-                                                              )
-                                                ]
-                            ] ,
-                            [ rdf:type owl:Restriction ;
                               owl:onProperty :isFiredBy ;
                               owl:allValuesFrom :Firearms
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :isUsedBy ;
-                              owl:allValuesFrom [ rdf:type owl:Class ;
-                                                  owl:unionOf ( :Shotgun
-                                                                :Shotguns
-                                                              )
-                                                ]
                             ] .
 
 
@@ -221,7 +227,7 @@
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Full_metal_Jacket
 :Full_metal_Jacket rdf:type owl:Class ;
-                   rdfs:subClassOf :Ammunition .
+                   rdfs:subClassOf :Bullet_Type .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Grenade_launcher
@@ -265,7 +271,7 @@
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Hollow_point
 :Hollow_point rdf:type owl:Class ;
-              rdfs:subClassOf :Ammunition .
+              rdfs:subClassOf :Bullet_Type .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Holographic
@@ -362,7 +368,9 @@
                                                                   )
                                                     ]
                                 ] ;
-                rdfs:comment "Ammunition that is used by shotgun gun and undermount accessory" .
+                rdfs:comment "Ammunition is made up of two major components. The bullet type or bullet head which is the object that gets shot and the cartridge which holds the gunpowder and determines what size of magazines the bullet fits into" ,
+                             "Ammunition that is used by shotgun gun and undermount accessory" ,
+                             "Shotguns are a special case because the shells contain bullets within a sealed whole of their cartridges" .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Shotguns
@@ -416,7 +424,7 @@
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Special
 :Special rdf:type owl:Class ;
-         rdfs:subClassOf :Ammunition .
+         rdfs:subClassOf :Bullet_Type .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#SpecialAmmoMagazine
@@ -471,7 +479,7 @@
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#Wad_Cutter
 :Wad_Cutter rdf:type owl:Class ;
-            rdfs:subClassOf :Ammunition .
+            rdfs:subClassOf :Bullet_Type .
 
 
 ###  http://www.semanticweb.org/ashley/ontologies/2021/2/untitled-ontology-8#muzzle_brake
